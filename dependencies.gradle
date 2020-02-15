@@ -1,0 +1,138 @@
+ext {
+    //Android
+    androidBuildToolsVersion = '28.0.3'
+    androidMinSdkVersion = 21
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+
+    appCompatVersion = '1.1.0'
+    archVersion = '2.1.0'
+    constraintLayoutVersion = '1.1.3'
+    coreVersion = '1.2.0'
+    espressoVersion = '3.1.0'
+    fragmentVersion = '1.2.1'
+    lifecycleVersion = '2.2.0'
+    recyclerViewVersion = '1.0.0'
+    testVersion = '1.2.0'
+    uiAutomatorVersion = '2.2.0'
+
+    kotlinCoroutinesVersion = '1.3.3'
+
+    assertJVersion = '3.11.1'
+    daggerVersion = '2.26'
+    junitVersion = '4.13'
+    mockitoAndroidVersion = '2.18.3'
+    mockitoCoreVersion = '3.1.0'
+    mockitoKotlinVersion = '2.2.0'
+    robolectricVersion = '4.3'
+    testAndroidJUnitVersion = '1.1.1'
+
+    def coreModules = [
+        core:   ':core-module',
+        coreContracts:   ':core-contracts'
+    ]
+
+    def featureModules = [
+        feature1: ':feature-module1',
+        feature2: ':feature-module2'
+    ]
+
+    def androidLibs = [
+        appCompat:                      [group: 'androidx.appcompat', name: 'appcompat', version: appCompatVersion],
+        archCommon:                     [group: 'androidx.arch.core', name: 'core-common', version: archVersion],
+        archRuntime:                    [group: 'androidx.arch.core', name: 'core-runtime', version: archVersion],
+        core:                           [group: 'androidx.core', name: 'core-ktx', version: coreVersion],
+        constraintLayout:               [group: 'androidx.constraintlayout', name: 'constraintlayout', version: constraintLayoutVersion],
+        dagger:                         [group: 'com.google.dagger', name: 'dagger', version: daggerVersion],
+        fragment:                       [group: 'androidx.fragment', name: 'fragment-ktx', version: fragmentVersion],
+        lifecycle:                      [group: 'androidx.lifecycle', name: 'lifecycle-livedata-ktx', version: lifecycleVersion],
+        lifeCycleViewModel:             [group: 'androidx.lifecycle', name: 'lifecycle-viewmodel-ktx', version: lifecycleVersion],
+        lifeCycleViewModelSavedState:   [group: 'androidx.lifecycle', name: 'lifecycle-viewmodel-savedstate', version: lifecycleVersion],
+        lifecycleJava8:                 [group: 'androidx.lifecycle', name: 'lifecycle-common-java8', version: lifecycleVersion],
+        recyclerView:                   [group: 'androidx.recyclerview', name: 'recyclerview', version: recyclerViewVersion],
+    ]
+
+    def kotlinLibs = [
+        stdlib:                   [group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: kotlin_version],
+        stdlibJDK7:               [group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk7', version: kotlin_version],
+        kotlinReflect:            [group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlin_version],
+        kotlinCoroutines:         [group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: kotlinCoroutinesVersion],
+        kotlinCoroutinesAndroid:  [group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-android', version: kotlinCoroutinesVersion]
+    ]
+
+    def kaptLibs = [
+        daggerCompiler:           [group: 'com.google.dagger', name: 'dagger-compiler', version: daggerVersion]
+    ]
+
+    def testLibs = [
+            archTesting:              [group: 'androidx.arch.core', name: 'core-testing', version: archVersion],
+            junit:                    [group: 'junit', name: 'junit', version: junitVersion],
+            kotlinTestJUnit:          [group: 'org.jetbrains.kotlin', name: 'kotlin-test-junit', version: kotlin_version],
+            kotlinCoroutinesTest:     [group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-test', version: kotlinCoroutinesVersion],
+            mockito:                  [group: 'org.mockito', name: 'mockito-inline', version: mockitoCoreVersion],
+            mockitoKotlin:            [group: 'com.nhaarman.mockitokotlin2', name: 'mockito-kotlin', version: mockitoKotlinVersion],
+            assertJ:                  [group: 'org.assertj', name: 'assertj-core', version: assertJVersion],
+            robolectric:              [group: 'org.robolectric', name: 'robolectric', version: robolectricVersion]
+    ]
+
+    def androidTestLibs = [
+            assertJ:                  [group: 'org.assertj', name: 'assertj-core', version: assertJVersion],
+            espresso:                 [group: 'androidx.test.espresso', name: 'espresso-core', version: espressoVersion],
+            espressoContrib:          [group: 'androidx.test.espresso', name: 'espresso-contrib', version: espressoVersion],
+            espressoIntents:          [group: 'androidx.test.espresso', name: 'espresso-contrib', version: espressoVersion],
+            espressoWeb:              [group: 'androidx.test.espresso', name: 'espresso-contrib', version: espressoVersion],
+            kotlinCoroutinesTest:     [group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-test', version: kotlinCoroutinesVersion],
+            mockitoAndroid:           [group: 'org.mockito', name: 'mockito-android', version: mockitoAndroidVersion],
+            orchestrator:             [group: 'androidx.test', name: 'orchestrator', version: testVersion],
+            testAndroidJUnit:         [group: 'androidx.test.ext', name: 'junit', version: testAndroidJUnitVersion],
+            uiAutomator:              [group: 'androidx.test.uiautomator', name: 'uiautomator', version: uiAutomatorVersion],
+    ]
+
+    coreDependencies = [
+            [configuration: "implementation", dependency: project(coreModules.coreContracts)],
+            [configuration: "implementation", dependency: androidLibs.appCompat],
+            [configuration: "implementation", dependency: androidLibs.archCommon],
+            [configuration: "implementation", dependency: androidLibs.archRuntime],
+            [configuration: "implementation", dependency: androidLibs.core],
+            [configuration: "implementation", dependency: androidLibs.constraintLayout],
+            [configuration: "implementation", dependency: androidLibs.dagger],
+            [configuration: "implementation", dependency: androidLibs.lifecycle],
+            [configuration: "implementation", dependency: androidLibs.lifecycleJava8],
+            [configuration: "implementation", dependency: androidLibs.recyclerView],
+            [configuration: "implementation", dependency: kotlinLibs.kotlinReflect],
+            [configuration: "implementation", dependency: kotlinLibs.kotlinCoroutines],
+            [configuration: "implementation", dependency: kotlinLibs.kotlinCoroutinesAndroid],
+            [configuration: "kapt", dependency: kaptLibs.daggerCompiler]
+    ]
+
+    coreContractsDependencies = [
+            [configuration: "implementation", dependency: kotlinLibs.stdlib],
+            [configuration: "implementation", dependency: kotlinLibs.stdlibJDK7]
+    ]
+
+    testDependencies = [
+            [configuration: "testImplementation", dependency: testLibs.archTesting],
+            [configuration: "testImplementation", dependency: testLibs.kotlinTestJUnit],
+            [configuration: "testImplementation", dependency: testLibs.kotlinCoroutinesTest],
+            [configuration: "testImplementation", dependency: testLibs.junit],
+            [configuration: "testImplementation", dependency: testLibs.mockito],
+            [configuration: "testImplementation", dependency: testLibs.mockitoKotlin],
+            [configuration: "testImplementation", dependency: testLibs.robolectric]
+    ]
+
+    androidTestDependencies = [
+            [configuration: "androidTestImplementation", dependency: androidTestLibs.assertJ],
+            [configuration: "androidTestImplementation", dependency: androidTestLibs.espresso],
+            [configuration: "androidTestImplementation", dependency: androidTestLibs.espressoContrib],
+            [configuration: "androidTestImplementation", dependency: androidTestLibs.espressoIntents],
+            [configuration: "androidTestImplementation", dependency: androidTestLibs.espressoWeb],
+            [configuration: "androidTestImplementation", dependency: androidTestLibs.kotlinCoroutinesTest],
+            [configuration: "androidTestImplementation", dependency: androidTestLibs.mockitoAndroid],
+            [configuration: "androidTestImplementation", dependency: androidTestLibs.testAndroidJUnit],
+            [configuration: "androidTestImplementation", dependency: androidTestLibs.uiAutomator],
+            [configuration: "androidTestUtil", dependency: androidTestLibs.orchestrator],
+            [configuration: "kaptAndroidTest", dependency: kaptLibs.daggerCompiler],
+    ]
+
+
+}

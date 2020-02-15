@@ -1,0 +1,9 @@
+include ':app', ':core-test'
+
+include ':core-module'
+include ':core-contracts'
+
+include ':feature-module1'
+include ':feature-module2'
+
+rootProject.name='Playground'

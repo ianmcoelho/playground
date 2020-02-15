@@ -1,0 +1,3 @@
+package com.ianmedeiros.corecontracts
+
+interface ContractTest
