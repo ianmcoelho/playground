@@ -1,6 +1,6 @@
 include ':app', ':core-test'
 
-include ':core-module'
+include ':core'
 include ':core-contracts'
 
 include ':feature-module1'

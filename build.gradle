@@ -73,8 +73,8 @@ subprojects {
             add(it.configuration, it.dependency, it.options)
         }
 
-        if (name != 'core-module' && name != 'core-contracts') {
-            implementation project(':core-module')
+        if (name != 'core' && name != 'core-contracts') {
+            implementation project(':core')
         }
 
         if (name != 'core-contracts') {

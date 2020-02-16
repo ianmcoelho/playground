@@ -32,11 +32,6 @@ ext {
         coreContracts:   ':core-contracts'
     ]
 
-    def featureModules = [
-        feature1: ':feature-module1',
-        feature2: ':feature-module2'
-    ]
-
     def androidLibs = [
         appCompat:                      [group: 'androidx.appcompat', name: 'appcompat', version: appCompatVersion],
         archCommon:                     [group: 'androidx.arch.core', name: 'core-common', version: archVersion],
@@ -46,9 +41,10 @@ ext {
         dagger:                         [group: 'com.google.dagger', name: 'dagger', version: daggerVersion],
         fragment:                       [group: 'androidx.fragment', name: 'fragment-ktx', version: fragmentVersion],
         lifecycle:                      [group: 'androidx.lifecycle', name: 'lifecycle-livedata-ktx', version: lifecycleVersion],
+        lifecycleJava8:                 [group: 'androidx.lifecycle', name: 'lifecycle-common-java8', version: lifecycleVersion],
+        lifecycleRuntime:               [group: 'androidx.lifecycle', name: 'lifecycle-runtime-ktx', version: lifecycleVersion],
         lifeCycleViewModel:             [group: 'androidx.lifecycle', name: 'lifecycle-viewmodel-ktx', version: lifecycleVersion],
         lifeCycleViewModelSavedState:   [group: 'androidx.lifecycle', name: 'lifecycle-viewmodel-savedstate', version: lifecycleVersion],
-        lifecycleJava8:                 [group: 'androidx.lifecycle', name: 'lifecycle-common-java8', version: lifecycleVersion],
         recyclerView:                   [group: 'androidx.recyclerview', name: 'recyclerview', version: recyclerViewVersion],
     ]
 
@@ -98,6 +94,9 @@ ext {
             [configuration: "implementation", dependency: androidLibs.dagger],
             [configuration: "implementation", dependency: androidLibs.lifecycle],
             [configuration: "implementation", dependency: androidLibs.lifecycleJava8],
+            [configuration: "implementation", dependency: androidLibs.lifecycleRuntime],
+            [configuration: "implementation", dependency: androidLibs.lifeCycleViewModel],
+            [configuration: "implementation", dependency: androidLibs.lifeCycleViewModelSavedState],
             [configuration: "implementation", dependency: androidLibs.recyclerView],
             [configuration: "implementation", dependency: kotlinLibs.kotlinReflect],
             [configuration: "implementation", dependency: kotlinLibs.kotlinCoroutines],

@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ianmedeiros.featuremodule1" />
+    package="com.ianmedeiros.featuremodule1" >
+
+    <application>
+        <activity android:name=".Feature1Activity" />
+    </application>
+</manifest>
