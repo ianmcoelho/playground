@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import com.ianmedeiros.coremodule.di.CompositionRoot
 import com.ianmedeiros.coremodule.di.getApplicationRoot
-import com.ianmedeiros.coremodule.feature.di.FeaturePresentationRoot
-import com.ianmedeiros.featuremodule1.di.DaggerFeature1Component
+import com.ianmedeiros.coremodule.feature.di.FeatureComponent
+import com.ianmedeiros.featuremodule1.di.Feature1ComponentRoot
 
-class Feature1Activity : FragmentActivity(), CompositionRoot<FeaturePresentationRoot> {
+class Feature1Activity : FragmentActivity(), CompositionRoot<FeatureComponent> {
 
-    override val root: FeaturePresentationRoot by lazy {
-        DaggerFeature1Component.factory().create(this, getApplicationRoot())
+    override val root: FeatureComponent by lazy {
+        getApplicationRoot<Feature1ComponentRoot>().feature1Component
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

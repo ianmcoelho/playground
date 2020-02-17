@@ -1,7 +1,8 @@
 package com.ianmedeiros.playground.di
 
 import android.content.Context
-import com.ianmedeiros.coremodule.feature.di.FeatureApplicationRoot
+import com.ianmedeiros.featuremodule1.di.Feature1ComponentRoot
+import com.ianmedeiros.featuremodule2.di.Feature2ComponentRoot
 import com.ianmedeiros.playground.di.modules.FeatureApplicationModule
 import dagger.BindsInstance
 import dagger.Component
@@ -12,7 +13,8 @@ import dagger.Component
     ]
 )
 interface ApplicationComponent :
-    FeatureApplicationRoot {
+    Feature1ComponentRoot,
+    Feature2ComponentRoot {
 
     @Component.Factory
     interface Factory {

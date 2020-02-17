@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.ianmedeiros.corecontracts.FeatureInteractor
 import com.ianmedeiros.coremodule.R
 import com.ianmedeiros.coremodule.di.getPresentationRoot
-import com.ianmedeiros.coremodule.feature.di.FeaturePresentationRoot
+import com.ianmedeiros.coremodule.feature.di.FeatureComponent
 import kotlinx.android.synthetic.main.fragment_feature.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,7 +22,7 @@ class FeatureFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        getPresentationRoot<FeaturePresentationRoot>().inject(this)
+        getPresentationRoot<FeatureComponent>().inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
