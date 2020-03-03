@@ -1,10 +1,9 @@
 package com.ianmedeiros.featuremultibinding1
 
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
-import dagger.multibindings.IntoSet
+import dagger.multibindings.ElementsIntoSet
 import javax.inject.Inject
 
 /**
@@ -82,39 +81,28 @@ class AchievementViewModel @Inject constructor(private val useCase: AchievementU
 
 class ListAchievementsUseCase @Inject constructor(val achievementList: Set<@JvmSuppressWildcards Achievement>)
 
-interface ViewModelModule
-
-@Module
-abstract class ProtectedModule {
-
-    @Binds
-    abstract fun bindsSpec(spec: ThreeStepsSpecification): ThreeStepsSpecification
-
-    @Binds
-    abstract fun bindAchievement(ach: Achievement): Achievement
-
-}
-
 @Module
 object AchievementsModule {
 
     @Provides
     @JvmStatic
-    @IntoSet
-    fun provideProtected(protected: ProtectedSpecification): Achievement = ThreeStepsAchievement(protected)
-
-    @Provides
-    @JvmStatic
-    @IntoSet
-    fun provideConsecutiveSpecs(alwaysClean: AlwaysCleanSpecification): Achievement = ConsecutiveAchievement(alwaysClean)
+    @ElementsIntoSet
+    fun provideProtected(
+        protected: ProtectedSpecification,
+        rocketeer: RocketeerSpecification,
+        alwaysClean: AlwaysCleanSpecification,
+        suchSpeed: SuchSpeedSpecification
+    ): Set<Achievement> = setOf(
+        ThreeStepsAchievement(protected),
+        ThreeStepsAchievement(rocketeer),
+        ConsecutiveAchievement(alwaysClean),
+        ConsecutiveAchievement(suchSpeed),
+        VipAchievement()
+    )
 
 }
 
 @Subcomponent(modules = [AchievementsModule::class])
-interface ViewModelComponent {
-
-    val achievements: Set<Achievement>
-
-//    fun inject(activity: AchievementActivity)
+interface AchievementListComponent {
     fun inject(activity: MultibindingActivity)
 }

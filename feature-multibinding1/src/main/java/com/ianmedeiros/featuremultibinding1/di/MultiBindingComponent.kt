@@ -1,7 +1,7 @@
 package com.ianmedeiros.featuremultibinding1.di
 
-import com.ianmedeiros.featuremultibinding1.ViewModelComponent
+import com.ianmedeiros.featuremultibinding1.AchievementListComponent
 
 interface MultiBindingComponent {
-    val viewModelComponent: ViewModelComponent
+    val viewModelComponent: AchievementListComponent
 }
