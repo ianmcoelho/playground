@@ -40,6 +40,7 @@ subprojects {
 
     scabbard {
         enabled true
+        fullBindingGraphValidation true
     }
 
     android {
