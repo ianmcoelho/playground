@@ -1,3 +1,5 @@
+Exercising multi-binding concepts.
+
 ## AchievementFragmentComponent Dependency graph
 
 ![AchievementFragmentComponent](com.ianmedeiros.featuremultibinding1.di.AchievementFragmentComponent.png)
