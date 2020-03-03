@@ -10,7 +10,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.6.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -94,6 +94,7 @@ subprojects {
         if (name.startsWith('app')) {
             implementation project(':feature-module1')
             implementation project(':feature-module2')
+            implementation project(':feature-multibinding1')
         }
     }
 

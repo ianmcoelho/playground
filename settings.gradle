@@ -7,3 +7,4 @@ include ':feature-module1'
 include ':feature-module2'
 
 rootProject.name='Playground'
+include ':feature-multibinding1'
