@@ -3,35 +3,45 @@ package com.ianmedeiros.featuremultibinding1.di
 import com.ianmedeiros.featuremultibinding1.AchievementActivity
 import com.ianmedeiros.featuremultibinding1.AchievementListActivity
 import com.ianmedeiros.featuremultibinding1.domain.*
+import com.squareup.inject.assisted.dagger2.AssistedModule
 import dagger.BindsInstance
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
 import dagger.multibindings.ElementsIntoSet
+import dagger.multibindings.IntoSet
 
 interface AchievementsComponent {
     val listComponent: AchievementListComponent
     val fragmentComponent: AchievementFragmentComponent.Factory
 }
 
-@Module
+@AssistedModule
+@Module(includes = [AssistedInject_AchievementsModule::class])
 object AchievementsModule {
 
     @Provides
     @JvmStatic
     @ElementsIntoSet
-    fun provideProtected(
+    fun provideThreeSteps(
         protected: ProtectedSpecification,
         rocketeer: RocketeerSpecification,
+        factory: ThreeStepsAchievement.Factory
+    ): Set<Achievement> = setOf(factory.create(protected), factory.create(rocketeer))
+
+    @Provides
+    @JvmStatic
+    @ElementsIntoSet
+    fun provideConsecutive(
         alwaysClean: AlwaysCleanSpecification,
-        suchSpeed: SuchSpeedSpecification
-    ): Set<Achievement> = setOf(
-        ThreeStepsAchievement(protected),
-        ThreeStepsAchievement(rocketeer),
-        ConsecutiveAchievement(alwaysClean),
-        ConsecutiveAchievement(suchSpeed),
-        VipAchievement()
-    )
+        suchSpeed: SuchSpeedSpecification,
+        factory: ConsecutiveAchievement.Factory
+    ): Set<Achievement> = setOf(factory.create(alwaysClean), factory.create(suchSpeed))
+
+    @Provides
+    @JvmStatic
+    @IntoSet
+    fun provideVip(): Achievement = VipAchievement()
 
 }
 
