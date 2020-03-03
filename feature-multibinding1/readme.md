@@ -1,6 +1,6 @@
 ## AchievementFragmentComponent Dependency graph
 
-![AchievementFragmentComponent](feature-multibinding1/com.ianmedeiros.featuremultibinding1.di.AchievementFragmentComponent.png)
+![AchievementFragmentComponent](com.ianmedeiros.featuremultibinding1.di.AchievementFragmentComponent.png)
 
 ## AchievementListComponent Dependency graph
-![AchievementListComponent](feature-multibinding1/com.ianmedeiros.featuremultibinding1.di.AchievementListComponent.png)
+![AchievementListComponent](com.ianmedeiros.featuremultibinding1.di.AchievementListComponent.png)
