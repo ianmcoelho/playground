@@ -2,7 +2,8 @@
     package="com.ianmedeiros.featuremultibinding1" >
 
     <application>
-        <activity android:name=".MultibindingActivity" >
+        <activity android:name=".AchievementListActivity"
+            android:label="playground-achievement">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
